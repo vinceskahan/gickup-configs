@@ -1,0 +1,18 @@
+source:
+  github:
+    - token: YOUR_TOKEN_HERE
+      user: OPTIONAL_GITHUB_USERNAME_HERE
+destination:
+  local:
+    - path: /output    # map this to the host os path you want in docker-compose.yml
+      structured: true # checks repos out like hostersite/user|organization/repo
+
+#cron: 0 22 * * * # optional
+# https://crontab.guru/
+
+log: # optional
+  timeformat: 2006-01-02 15:04:05 # you can use a custom time format, use https://yourbasic.org/golang/format-parse-string-time-date-example/ to check how date formats work in go
+  file-logging: # optional
+    dir: log # directory to log into
+    file: gickup.log # file to log into
+    maxage: 7 # keep logs for 7 days

@@ -1,0 +1,119 @@
+source:
+  github:
+    - token: some-token
+      user: some-user # the user you want to clone the repositories from.
+      # if you want to get everything from your user, leave out the user parameter and just use the token.
+      # for the clone process, either use:
+      # - username + password
+      # - sshkey
+      # - token
+      username: your-user # user is used to clone the repo with
+      password: your-password
+      ssh: true # can be true or false
+      sshkey: /path/to/key # if empty, it uses your home directories' .ssh/id_rsa
+      exclude: # this excludes the repos "foo" and "bar"
+        - foo
+        - bar
+      include: # this includes the repo "foobar"
+        - foobar
+      excludeorgs: # this excludes repos from the organizations "foo" and "bar"
+        - foo
+        - bar
+  gitea:
+    - token: some-token
+      user: some-user # the user you want to clone the repositories from.
+      url: http(s)://url-to-gitea # if empty, it uses https://gitea.com
+      # if you want to get everything from your user, leave out the user parameter and just use the token.
+      # for the clone process, either use:
+      # - username + password
+      # - sshkey
+      # - token
+      username: your-user # user is used to clone the repo with
+      password: your-password
+      ssh: true # can be true or false
+      sshkey: /path/to/key # if empty, it uses your home directories' .ssh/id_rsa
+      exclude: # this excludes the repos "foo" and "bar"
+        - foo
+        - bar
+      include: # this includes the repo "foobar"
+        - foobar
+      excludeorgs: # this excludes repos from the organizations "foo" and "bar"
+        - foo
+        - bar
+  gogs:
+    - token: some-token
+      user: some-user # the user you want to clone the repositories from.
+      url: http(s)://url-to-gogs # no default value
+      # if you want to get everything from your user, leave out the user parameter and just use the token.
+      # for the clone process, either use:
+      # - username + password
+      # - sshkey
+      # - token
+      username: your-user # user is used to clone the repo with
+      password: your-password
+      ssh: true # can be true or false
+      sshkey: /path/to/key # if empty, it uses your home directories' .ssh/id_rsa
+      exclude: # this excludes the repos "foo" and "bar"
+        - foo
+        - bar
+      include: # this includes the repo "foobar"
+        - foobar
+      excludeorgs: # this excludes repos from the organizations "foo" and "bar"
+        - foo
+        - bar
+  gitlab:
+    - token: some-token
+      user: some-user # the user you want to clone the repositories from.
+      url: http(s)://url-to-gitlab # if empty, it uses https://gitlab.com
+      # if you want to get everything from your user, leave out the user parameter and just use the token.
+      # for the clone process, either use:
+      # - username + password
+      # - sshkey
+      # - token
+      username: your-user # user is used to clone the repo with
+      password: your-password
+      ssh: true # can be true or false
+      sshkey: /path/to/key # if empty, it uses your home directories' .ssh/id_rsa
+      exclude: # this excludes the repos "foo" and "bar"
+        - foo
+        - bar
+      include: # this includes the repo "foobar"
+        - foobar
+      excludeorgs: # this excludes repos from the organizations "foo" and "bar"
+        - foo
+        - bar
+  bitbucket:
+    - user: some-user # the user you want to clone the repositories from.
+      url: http(s)://url-to-bitbucket # if empty, it uses https://bitbucket.org
+      username: your-user # user is used to clone the repo with
+      password: your-password
+      ssh: true # can be true or false
+      sshkey: /path/to/key # if empty, it uses your home directories' .ssh/id_rsa
+      exclude: # this excludes the repos foo and bar
+        - foo
+        - bar
+      include:
+        - foobar
+destination:
+  gitea:
+    - token: some-token
+      url: http(s)://url-to-gitea
+  gogs:
+    - token: some-token
+      url: http(s)://url-to-gogs
+  gitlab:
+    - token: some-token
+      url: http(s)://url-to-gitlab
+  local:
+    - path: /some/path/gickup
+      structured: true # checks repos out like hostersite/user|organization/repo
+
+cron: 0 22 * * * # optional
+# https://crontab.guru/
+
+log: # optional
+  timeformat: 2006-01-02 15:04:05 # you can use a custom time format, use https://yourbasic.org/golang/format-parse-string-time-date-example/ to check how date formats work in go
+  file-logging: # optional
+    dir: log # directory to log into
+    file: gickup.log # file to log into
+    maxage: 7 # keep logs for 7 days

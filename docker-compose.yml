@@ -1,0 +1,17 @@
+
+#
+# note 'output' puts things under this tree
+# - docker-compose up (to run)
+#   then look under 'output' for all the repos
+#
+
+version: "3"
+services:
+  runner:
+    # build: . # If you want to Build the Image locally (You need the complete Repo on your PC)
+    image: buddyspencer/gickup:latest
+    volumes:
+      - ${PWD}/conf.yml:/gickup/conf.yml
+      - /Users/vince/Desktop/gickup-backups:/output
+    command: ["./gickup/app", "/gickup/conf.yml"]
+
